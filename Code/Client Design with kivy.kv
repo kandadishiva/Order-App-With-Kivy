@@ -1,0 +1,3978 @@
+<WindowManager>
+    Screen:
+        name:"HomePage"
+
+        BoxLayout:
+            orientation: "vertical"
+            size: root.width,root.height
+
+            padding: 10
+            Image:
+                source:"food.png"
+                allow_stretch: False
+                keep_ratio: True
+
+            Screen:
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size: root.width,root.height
+                    padding: 10
+                    spacing: 30
+
+                    MDLabel:
+                        text: "WELCOME"
+                        font_size:40
+                        halign:"center"
+                        pos_hint: {"center_x":0.5}
+
+                    MDRoundFlatButton:
+                        text:"Customer"
+                        font_size:12
+                        pos_hint: {"center_x":0.5}
+                        on_release: root.side(app,1)
+
+                    MDRoundFlatButton:
+                        text:"Agent"
+                        font_size:12
+                        pos_hint: {"center_x":0.5}
+                        on_release: root.side(app,2)
+
+                    Widget:
+                        height:25
+
+    Screen:
+        name:"CustomerPage"
+        BoxLayout:
+            orientation: "vertical"
+            size: root.width,root.height
+
+            padding:25
+            spacing:15
+
+            Image:
+                source:"food.png"
+                allow_stretch: False
+                keep_ratio: False
+
+            MDLabel:
+                text:"ORDER"
+                color:"blue"
+                font_size:40
+                font_name:"Comic"
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDLabel:
+                text:"NO LINE , NO WAITING"
+                color:"#1E90FF"
+                font_size:12
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+
+            MDLabel:
+                text:"Continue with a Simple Log In"
+                color:"#1E90FF"
+                font_size:12
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+                padding_y:15
+
+
+            MDTextFieldRound:
+                id:user
+                hint_text:"Mobile No"
+                icon_left:"sim"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+
+            MDTextFieldRound:
+                id:pwd
+                hint_text:"Password"
+                icon_left:"lock"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+                password:True
+
+            MDTextButton:
+                text:"Forgot Password?"
+                font_size:11
+                pos_hint:{"center_x":0.6}
+
+            MDRoundFlatButton:
+                text:" Sign in "
+                font_size:18
+                pos_hint:{"center_x":0.5,"center_y":0.001}
+                on_release:root.CustomerSignIn(app)
+
+            MDTextButton:
+                text:"Don't have an account?"
+                font_size:12
+                pos_hint:{"center_x":0.5}
+                on_release:root.current="NewLogin"
+
+    Screen:
+        name:"NewLogin"
+        BoxLayout:
+            orientation: "vertical"
+            size: root.width,root.height
+
+            padding:25
+            spacing:15
+
+            Image:
+                source:"food.png"
+                allow_stretch: False
+                keep_ratio: False
+
+            MDLabel:
+                text:"ORDER"
+                color:"blue"
+                font_size:40
+                font_name:"Comic"
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDLabel:
+                text:"NO LINE , NO WAITING"
+                color:"#1E90FF"
+                font_size:12
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDLabel:
+                text:"Continue with a Simple Log In"
+                color:"#1E90FF"
+                font_size:12
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+                padding_y:15
+
+            MDTextFieldRound:
+                id:NewNo
+                hint_text:"Mobile No"
+                icon_left:"sim"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+            MDRoundFlatButton:
+                text:" Continue "
+                font_size:18
+                pos_hint:{"center_x":0.5,"center_y":0.001}
+                on_release:root.NewUser(app)
+
+    Screen:
+        name:"OTP"
+        BoxLayout:
+            orientation: "vertical"
+            size: root.width,root.height
+
+            padding:25
+            spacing:15
+
+            Image:
+                source:"food.png"
+                allow_stretch: False
+                keep_ratio: False
+
+            MDLabel:
+                text:"ORDER"
+                color:"blue"
+                font_size:40
+                font_name:"Comic"
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDLabel:
+                text:"NO LINE , NO WAITING"
+                color:"#1E90FF"
+                font_size:12
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+
+            MDLabel:
+                text:"Continue with a Simple Log In"
+                color:"#1E90FF"
+                font_size:12
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+                padding_y:15
+
+
+            MDTextFieldRound:
+                id:No
+                hint_text:"Mobile No"
+                icon_left:"sim"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+            Button:
+                text:"Not This Number"
+                pos_hint:{"center_x":0.57}
+                size_hint:.19,.169
+                color:"black"
+                background_color:0,0,0,0
+                on_release:
+                    root.current="NewLogin"
+
+            MDTextFieldRound:
+                id:otpn
+                hint_text:"Otp No"
+                icon_left:"eye-off"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+                password : True
+
+            Button:
+                text:"Resend Otp"
+                pos_hint:{"center_x":0.6}
+                size_hint:0.19,0.169
+                color:"black"
+                background_color:0,0,0,0
+
+            Widget:
+                height:0
+
+            MDRoundFlatButton:
+                text:"Confirm"
+                font_size:18
+                pos_hint:{"center_x":0.5,"center_y":0.001}
+                on_release:root.NewUserOtp(app)
+
+    Screen:
+        name:"CreatePassword"
+        BoxLayout:
+            orientation:"vertical"
+            size:root.width,root.height
+
+            padding:25
+            spacing:15
+
+            Image:
+                source:"food.png"
+                allow_stretch: False
+                keep_ratio: False
+
+            MDLabel:
+                text:"ORDER"
+                color:"blue"
+                font_size:40
+                font_name:"Comic"
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDLabel:
+                text:"Create your Password"
+                color:"#1E90FF"
+                font_size:18
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+                padding_y:15
+
+            MDTextFieldRound:
+                id:Luser
+                hint_text:"UserName"
+                icon_left:"sim"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+            MDTextFieldRound:
+                id:Pass1
+                hint_text:"Password"
+                icon_left:"lock"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+                password : True
+
+            MDTextFieldRound:
+                id:Pass2
+                hint_text:"Confirm Password"
+                icon_left:"lock"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+            MDRoundFlatButton:
+                text:"Confirm"
+                font_size:18
+                pos_hint:{"center_x":0.5,"center_y":0.001}
+                on_release:root.NewPassword(app)
+
+
+    Screen:
+        name:"Detailes"
+        BoxLayout:
+            orientation:"vertical"
+            size: root.width,root.height
+
+            padding:25
+            spacing:15
+
+            Image:
+                source:"food.png"
+                allow_stretch: False
+                keep_ratio: False
+
+            MDLabel:
+                text:"ORDER"
+                color:"blue"
+                font_size:40
+                font_name:"Comic"
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDTextFieldRound:
+                id:name
+                hint_text:"Name"
+                icon_left:"account"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+            MDTextFieldRound:
+                id:email
+                hint_text:"Email"
+                icon_left:"mail"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+            MDRoundFlatButton:
+                text:"Continue"
+                font_size:18
+                pos_hint:{"center_x":0.5,"center_y":0.001}
+                on_release:
+                    root.DetailesPage(app,1)
+
+    Screen:
+        name:"Home"
+        MDNavigationLayout:
+            ScreenManager:
+                Screen:
+                    BoxLayout:
+                        orientation:"vertical"
+                        size: root.width,root.height
+
+                        padding : 15
+                        spacing: 15
+                        MDToolbar:
+                            title:"Order"
+                            left_action_items:[["menu",lambda x: nav_drawer.set_state('toggle'),"Navigation Drawer"]]
+                            right_action_items:[["home","Home"]]
+                            elevation:10
+
+                        MDBottomNavigation:
+                            MDBottomNavigationItem:
+                                name:"1"
+                                text:"Home"
+                                icon:'home'
+
+                                MDRoundFlatIconButton:
+                                    icon:"school"
+                                    text:"\nCollege Canteen\n"
+                                    font_size:18
+                                    pos_hint:{"center_x":0.5,"center_y":0.8}
+                                    on_release:
+                                        root.GotoCanteenList(app)
+                                        #root.transition.direction ="left"
+
+
+                                MDRoundFlatIconButton:
+                                    icon:"silverware-fork-knife"
+                                    text:"\nRestaurants       \n"
+                                    font_size:18
+                                    pos_hint:{"center_x":0.5,"center_y":0.5}
+
+
+                            MDBottomNavigationItem:
+                                name:"2"
+                                text:"Orders"
+                                icon:'cart-variant'
+
+                                ScrollView:
+                                    GridLayout:
+                                        id: grid_banner
+                                        cols: 1
+                                        padding: 7, 7
+                                        spacing: 10, 10
+                                        size_hint_y: None
+                                        height: self.minimum_height
+                                        row_default_height: 180
+
+                                        MDCard:
+                                            id:OrderedCanteen1
+                                            radius:12
+                                            size_hint:(0.9,.3)
+                                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                                            halign:"center"
+                                            elevation:10
+                                            opacity:0
+                                            disabled : True
+                                            adaptive_height: True
+                                            ripple_behavior: True
+                                            on_release:root.GotoOrderedFoodList(app,1)
+                                            BoxLayout:
+                                                orientation:'vertical'
+                                                size: root.width,root.height
+
+                                                padding:'5dp'
+                                                MDLabel :
+                                                    id:OrderedOrderNo1
+                                                    text:"[b]Order No : 123456[/b]"
+                                                    hint_text:"0"
+                                                    font_size:15
+                                                    halign:"center"
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                Image:
+                                                    id:OrderedCanteenImage1
+                                                    source:'kl.png'
+                                                    size_hint:(1,1)
+                                                MDLabel :
+                                                    id:OrderedCanteenName1
+                                                    text:"[b]Canteen Name[/b]"
+                                                    hint_text:"0"
+                                                    font_size:18
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:OrderedCollegeName1
+                                                    text:"College Name"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    font_size:14
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:OrderedCanteenAddress1
+                                                    text:"Canteen Address"
+                                                    color:"black"
+                                                    font_size:14
+                                                    font_name:"Century"
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+
+
+                                        MDCard:
+                                            id:OrderedCanteen2
+                                            radius:12
+                                            size_hint:(0.9,.3)
+                                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                                            halign:"center"
+                                            elevation:10
+                                            adaptive_height: True
+                                            ripple_behavior: True
+                                            disabled : True
+                                            opacity : 0
+                                            on_release:root.GotoOrderedFoodList(app,2)
+
+                                            BoxLayout:
+                                                orientation:'vertical'
+                                                size: root.width,root.height
+
+                                                padding:'5dp'
+                                                MDLabel :
+                                                    id:OrderedOrderNo2
+                                                    text:"[b]Order No : 123456[/b]"
+                                                    hint_text:"0"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                Image:
+                                                    id:OrderedCanteenImage2
+                                                    source:'kl.png'
+                                                    size_hint:(1,1)
+                                                MDLabel :
+                                                    id:OrderedCanteenName2
+                                                    text:"[b]Food1[/b]"
+                                                    font_size:18
+                                                    markup: True
+                                                    hint_text:"0"
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:OrderedCollegeName2
+                                                    text:"CollegeName"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    font_size:14
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+
+                                                MDLabel :
+                                                    id:OrderedCanteenAddress2
+                                                    text:"Canteen Address"
+                                                    color:"black"
+                                                    font_size:14
+                                                    font_name:"Century"
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+
+                                        MDCard:
+                                            id:OrderedCanteen3
+                                            radius:12
+                                            size_hint:(0.9,.3)
+                                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                                            halign:"center"
+                                            elevation:10
+                                            adaptive_height: True
+                                            ripple_behavior: True
+                                            disabled : True
+                                            opacity : 0
+                                            on_release:root.GotoOrderedFoodList(app,3)
+
+                                            BoxLayout:
+                                                orientation:'vertical'
+                                                size: root.width,root.height
+
+                                                padding:'5dp'
+                                                MDLabel :
+                                                    id:OrderedOrderNo3
+                                                    text:"[b]Order No : 123456[/b]"
+                                                    hint_text:"0"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                Image:
+                                                    id:OrderedCanteenImage3
+                                                    source:'kl.png'
+                                                    size_hint:(1,1)
+                                                MDLabel :
+                                                    id:OrderedCanteenName3
+                                                    text:"[b]Food1[/b]"
+                                                    font_size:18
+                                                    markup: True
+                                                    hint_text:"0"
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:OrderedCollegeName3
+                                                    text:"CollegeName"
+                                                    font_size:14
+                                                    color:"black"
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+
+                                                MDLabel :
+                                                    id:OrderedCanteenAddress3
+                                                    text:"Canteen Address"
+                                                    font_size:14
+                                                    color:"black"
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                        MDCard:
+                                            id:OrderedCanteen4
+                                            radius:12
+                                            size_hint:(0.9,.3)
+                                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                                            halign:"center"
+                                            elevation:10
+                                            adaptive_height: True
+                                            ripple_behavior: True
+                                            disabled : True
+                                            opacity : 0
+                                            on_release:root.GotoOrderedFoodList(app,4)
+
+                                            BoxLayout:
+                                                orientation:'vertical'
+                                                size: root.width,root.height
+
+                                                padding:'5dp'
+                                                MDLabel :
+                                                    id:OrderedOrderNo4
+                                                    text:"[b]Order No : 123456[/b]"
+                                                    hint_text:"0"
+                                                    font_size:15
+                                                    halign:"center"
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                Image:
+                                                    id:OrderedCanteenImage4
+                                                    source:'kl.png'
+                                                    size_hint:(1,1)
+                                                MDLabel :
+                                                    id:OrderedCanteenName4
+                                                    text:"[b]Food1[/b]"
+                                                    font_size:18
+                                                    markup: True
+                                                    hint_text:"0"
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:OrderedCollegeName4
+                                                    text:"CollegeName"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    font_size:14
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:OrderedCanteenAddress4
+                                                    text:"Canteen Address"
+                                                    color:"black"
+                                                    font_size:14
+                                                    font_name:"Century"
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                        MDCard:
+                                            id:OrderedCanteen5
+                                            radius:12
+                                            size_hint:(0.9,.3)
+                                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                                            halign:"center"
+                                            elevation:10
+                                            adaptive_height: True
+                                            ripple_behavior: True
+                                            disabled : True
+                                            opacity : 0
+                                            on_release:root.GotoOrderedFoodList(app,5)
+
+                                            BoxLayout:
+                                                orientation:'vertical'
+                                                size: root.width,root.height
+
+                                                padding:'5dp'
+                                                MDLabel :
+                                                    id:OrderedOrderNo5
+                                                    text:"[b]Order No : 123456[/b]"
+                                                    halign:"center"
+                                                    hint_text:"0"
+                                                    font_size:15
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                Image:
+                                                    id:OrderedCanteenImage5
+                                                    source:'kl.png'
+                                                    size_hint:(1,1)
+                                                MDLabel :
+                                                    id:OrderedCanteenName5
+                                                    text:"[b]Food1[/b]"
+                                                    font_size:18
+                                                    markup: True
+                                                    hint_text:"0"
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:OrderedCollegeName5
+                                                    text:"CollegeName"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    font_size:14
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:OrderedCanteenAddress5
+                                                    text:"Canteen Address"
+                                                    font_size:14
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+
+                            MDBottomNavigationItem:
+                                name:"3"
+                                text:"24/7"
+                                icon:'alert'
+
+                                MDLabel:
+                                    id:order
+                                    text:" Settings"
+                                    color:"blue"
+                                    font_size:35
+                                    font_name:"Comic"
+            MDNavigationDrawer:
+                id:nav_drawer
+
+                BoxLayout:
+                    orientation:"vertical"
+
+                    padding:20
+                    spacing:20
+                    MDRectangleFlatIconButton:
+                        id:HomeUserName
+                        icon:"account"
+                        text:"Welcome User"
+                        line_color:(0, 0, 0, 0)
+                        font_size: "25sp"
+                        user_font_size: "64sp"
+
+                    ScrollView:
+                        MDList:
+                            OneLineIconListItem:
+                                text:"Profile"
+                                IconLeftWidget:
+                                    icon:"google-street-view"
+
+                            OneLineIconListItem:
+                                text:"Settings"
+                                IconLeftWidget:
+                                    icon:"tools"
+
+                            OneLineIconListItem:
+                                text:"Logout"
+                                on_release:root.logout(app)
+                                IconLeftWidget:
+                                    icon:"logout"
+
+
+    Screen:
+        name:"Canteen Search"
+        BoxLayout:
+            orientation:"vertical"
+            size: root.width,root.height
+
+            padding : 15
+            spacing: 15
+            MDToolbar:
+                left_action_items:[["arrow-left",lambda x: root.set_screen(app),"Back"]]
+                title:"College's List"
+                elevation:10
+
+            MDTextFieldRound:
+                id:Search
+                hint_text:"Search"
+                icon_left:"magnify"
+                size_hint_x:None
+                width:220
+                font_size:20
+                pos_hint:{"center_x":0.5}
+
+            MDRectangleFlatIconButton:
+                icon:"history"
+                text:"recently viewed"
+                color:"black"
+                line_color:(0, 0, 0, 0)
+                font_size: "20sp"
+
+            MDRectangleFlatIconButton:
+                icon:"view-list-outline"
+                text:"List of colleges"
+                color:"black"
+                line_color:(0, 0, 0, 0)
+                font_size: "20sp"
+            Widget:
+
+    Screen:
+        name:"SellerLoginPage"
+        BoxLayout:
+            orientation: "vertical"
+            size: root.width,root.height
+
+            padding:25
+            spacing:15
+
+            Image:
+                source:"food.png"
+                allow_stretch: False
+                keep_ratio: False
+
+            MDLabel:
+                text:"ORDER"
+                color:"blue"
+                font_size:40
+                font_name:"Comic"
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDLabel:
+                text:"NO LINE , NO WAITING"
+                color:"#1E90FF"
+                font_size:12
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+
+            MDLabel:
+                text:"Continue with a Simple Log In"
+                color:"#1E90FF"
+                font_size:12
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+                padding_y:15
+
+
+            MDTextFieldRound:
+                id:SellerUser
+                hint_text:"Mobile No"
+                icon_left:"sim"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+
+            MDTextFieldRound:
+                id:SellerPwd
+                hint_text:"Password"
+                icon_left:"lock"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+                password:True
+
+            MDTextButton:
+                text:"Forgot Password?"
+                font_size:11
+                pos_hint:{"center_x":0.6}
+
+            MDRoundFlatButton:
+                text:" Sign in "
+                font_size:18
+                pos_hint:{"center_x":0.5,"center_y":0.001}
+                on_release:root.SellerLoginin(app)
+
+            MDTextButton:
+                text:"Don't have an account?"
+                font_size:12
+                pos_hint:{"center_x":0.5}
+                on_release:root.current="NewSellerPage"
+
+    Screen:
+        name:"NewSellerPage"
+        BoxLayout:
+            orientation: "vertical"
+            size: root.width,root.height
+
+            padding:25
+            spacing:15
+
+            Image:
+                source:"food.png"
+                allow_stretch: False
+                keep_ratio: False
+
+            MDLabel:
+                text:"ORDER"
+                color:"blue"
+                font_size:40
+                font_name:"Comic"
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDLabel:
+                text:"NO LINE , NO WAITING"
+                color:"#1E90FF"
+                font_size:12
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+
+            MDLabel:
+                text:"Continue with a Simple Log In"
+                color:"#1E90FF"
+                font_size:12
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+                padding_y:15
+
+
+            MDTextFieldRound:
+                id:NewSPh
+                hint_text:"Mobile No"
+                icon_left:"sim"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+            Widget:
+                height:15
+
+            MDRoundFlatButton:
+                text:"Continue"
+                font_size:18
+                pos_hint:{"center_x":0.5,"center_y":0.001}
+                on_release:
+                    root.SellerSignIn(app)
+
+    Screen:
+        name:"SellerOTP"
+        BoxLayout:
+            orientation: "vertical"
+            size: root.width,root.height
+
+            padding:25
+            spacing:15
+
+            Image:
+                source:"food.png"
+                allow_stretch: False
+                keep_ratio: False
+
+            MDLabel:
+                text:"ORDER"
+                color:"blue"
+                font_size:40
+                font_name:"Comic"
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDLabel:
+                text:"NO LINE , NO WAITING"
+                color:"#1E90FF"
+                font_size:12
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+
+            MDLabel:
+                text:"Continue with a Simple Log In"
+                color:"#1E90FF"
+                font_size:12
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+                padding_y:15
+
+
+            MDTextFieldRound:
+                id:SOtpPh
+                hint_text:"Mobile No"
+                icon_left:"sim"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+            Button:
+                text:"Not This Number"
+                pos_hint:{"center_x":0.57}
+                size_hint:.19,.169
+                color:"black"
+                background_color:0,0,0,0
+                on_release:
+                    root.current="SellerPage"
+
+            MDTextFieldRound:
+                id:Sotp
+                hint_text:"Otp No"
+                icon_left:"eye-off"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+                password : True
+
+            Button:
+                text:"Resend Otp"
+                pos_hint:{"center_x":0.6}
+                size_hint:0.19,0.169
+                color:"black"
+                background_color:0,0,0,0
+
+            Widget:
+                height:0
+
+            MDRoundFlatButton:
+                text:"Confirm"
+                font_size:18
+                pos_hint:{"center_x":0.5,"center_y":0.001}
+                on_release:
+                    root.SellerNewOtp(app)
+
+    Screen:
+        name:"SellerCreatePassword"
+        BoxLayout:
+            orientation:"vertical"
+            size:root.width,root.height
+
+            padding:25
+            spacing:15
+
+            Image:
+                source:"food.png"
+                allow_stretch: False
+                keep_ratio: False
+
+            MDLabel:
+                text:"ORDER"
+                color:"blue"
+                font_size:40
+                font_name:"Comic"
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDLabel:
+                text:"Create your Password"
+                color:"#1E90FF"
+                font_size:18
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+                padding_y:15
+
+            MDTextFieldRound:
+                id:Suser
+                hint_text:"UserName"
+                icon_left:"sim"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+            MDTextFieldRound:
+                id:SPass1
+                hint_text:"Password"
+                icon_left:"lock"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+                password : True
+
+            MDTextFieldRound:
+                id:SPass2
+                hint_text:"Confirm Password"
+                icon_left:"lock"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+            MDRoundFlatButton:
+                text:"Confirm"
+                font_size:18
+                pos_hint:{"center_x":0.5,"center_y":0.001}
+                on_release:root.SellerNewPassword(app)
+
+    Screen:
+        name:"SellerType"
+
+        BoxLayout:
+            orientation: "vertical"
+            size: root.width,root.height
+
+            padding: 25
+            spacing:35
+            Image:
+                source:"food.png"
+                allow_stretch: False
+                keep_ratio: True
+
+            MDRoundFlatIconButton:
+                text:"\nCanteen   \n"
+                icon:"food-variant"
+                font_size:18
+                pos_hint: {"center_x":0.5}
+                on_release: root.current="CanteenDetailes"
+
+            MDRoundFlatIconButton:
+                text:"\nRestaurant\n"
+                icon:"hamburger"
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+    Screen:
+        name:"CanteenDetailes"
+
+        BoxLayout:
+            orientation:"vertical"
+            size:root.width,root.height
+
+            padding:25
+            spacing:25
+
+            Image:
+                source:"food.png"
+                allow_stretch: False
+                keep_ratio: False
+
+            MDLabel:
+                text:"ORDER"
+                color:"blue"
+                font_size:40
+                font_name:"Comic"
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDTextFieldRound:
+                id:CollegeName
+                hint_text:"College Name"
+                icon_left:"school"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+            MDTextFieldRound:
+                id:CanteenName
+                hint_text:"Canteen Name"
+                icon_left:"food-variant"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+            MDTextFieldRound:
+                id:CanteenOwnerName
+                hint_text:"Owner Name"
+                icon_left:"account-outline"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+            MDTextFieldRound:
+                id:CanteenOwnerNo
+                hint_text:"Owner No"
+                icon_left:"sim"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+            MDTextFieldRound:
+                id:CanteenAddress
+                hint_text:"Address"
+                icon_left:"map-marker"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+
+            MDRoundFlatIconButton:
+                text:"Confirm"
+                icon:"ticket-confirmation"
+                font_size:18
+                pos_hint:{"center_x":0.5}
+                on_release:
+                    root.SellerCanteenDetailes(app)
+
+    Screen:
+        name:"Seller Homepage"
+        MDNavigationLayout:
+            ScreenManager:
+                Screen:
+                    BoxLayout:
+                        orientation:"vertical"
+                        size: root.width,root.height
+
+                        padding : 15
+                        spacing: 15
+                        MDToolbar:
+                            title:"Order"
+                            left_action_items:[["menu",lambda x: seller_nav_drawer.set_state('toggle'),"Navigation Drawer"]]
+                            right_action_items:[["home","Home"]]
+                            elevation:10
+
+                        MDBottomNavigation:
+                            MDBottomNavigationItem:
+                                name:"S1"
+                                text:"Home"
+                                icon:'home'
+
+                                MDRoundFlatIconButton:
+                                    icon:"food"
+                                    text:"\nFood List   \n"
+                                    font_size:18
+                                    pos_hint:{"center_x":0.5,"center_y":0.8}
+                                    on_release:
+                                        root.GoToSellerFoodlist(app)
+                                        root.transition.direction = 'left'
+
+                            MDBottomNavigationItem:
+                                name:"S2"
+                                text:"Orders"
+                                icon:"cart-variant"
+
+                                ScrollView:
+                                    GridLayout:
+                                        id: grid_banner
+                                        cols: 1
+                                        padding: 7, 7
+                                        spacing: 10, 10
+                                        size_hint_y: None
+                                        height: self.minimum_height
+                                        row_default_height: 180
+
+                                        MDCard:
+                                            id:CustomerOrder1
+                                            radius:12
+                                            size_hint:(0.9,.3)
+                                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                                            halign:"center"
+                                            elevation:10
+                                            opacity:1
+                                            disabled : False
+                                            adaptive_height: True
+                                            ripple_behavior: True
+                                            on_release:
+                                                root.GoInSellerOrderDetailes(app,1)
+
+                                            BoxLayout:
+                                                orientation:'vertical'
+                                                size: root.width,root.height
+
+                                                padding:'5dp'
+                                                spacing:10
+                                                MDLabel:
+                                                    id:SellerOrderStatus1
+                                                    text:"Ordered"
+                                                    halign:"center"
+                                                    font_size:18
+                                                    height:self.texture_size[1]
+                                                MDProgressBar:
+                                                    id:SellerOrderStatusValue1
+                                                    value: 5
+                                                MDLabel :
+                                                    id:SellerOrderNo1
+                                                    text:"[b]Order No : 123456[/b]"
+                                                    hint_text:"0"
+                                                    font_size:18
+                                                    halign:"center"
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:SellerNoofItemsAndCost1
+                                                    text:"5 Items Ordered               Total cost:100"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    text:"Click to view the Food Items"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                        MDCard:
+                                            id:CustomerOrder2
+                                            radius:12
+                                            size_hint:(0.9,.3)
+                                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                                            halign:"center"
+                                            elevation:10
+                                            opacity:1
+                                            disabled : False
+                                            adaptive_height: True
+                                            ripple_behavior: True
+                                            on_release:
+                                                root.GoInSellerOrderDetailes(app,2)
+
+                                            BoxLayout:
+                                                orientation:'vertical'
+                                                size: root.width,root.height
+
+                                                padding:'5dp'
+                                                spacing:10
+                                                MDLabel:
+                                                    id:SellerOrderStatus2
+                                                    text:"Ordered"
+                                                    halign:"center"
+                                                    font_size:18
+                                                    height:self.texture_size[1]
+                                                MDProgressBar:
+                                                    id:SellerOrderStatusValue2
+                                                    value: 5
+                                                MDLabel :
+                                                    id:SellerOrderNo2
+                                                    text:"[b]Order No : 123456[/b]"
+                                                    hint_text:"0"
+                                                    font_size:18
+                                                    halign:"center"
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:SellerNoofItemsAndCost2
+                                                    text:"5 Items Ordered               Total cost:100"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    text:"Click to view the Food Items"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                        MDCard:
+                                            id:CustomerOrder3
+                                            radius:12
+                                            size_hint:(0.9,.3)
+                                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                                            halign:"center"
+                                            elevation:10
+                                            opacity:1
+                                            disabled : False
+                                            adaptive_height: True
+                                            ripple_behavior: True
+                                            on_release:
+                                                root.GoInSellerOrderDetailes(app,3)
+
+                                            BoxLayout:
+                                                orientation:'vertical'
+                                                size: root.width,root.height
+
+                                                padding:'5dp'
+                                                spacing:10
+                                                MDLabel:
+                                                    id:SellerOrderStatus3
+                                                    text:"Ordered"
+                                                    halign:"center"
+                                                    font_size:18
+                                                    height:self.texture_size[1]
+                                                MDProgressBar:
+                                                    id:SellerOrderStatusValue3
+                                                    value: 5
+                                                MDLabel :
+                                                    id:SellerOrderNo3
+                                                    text:"[b]Order No : 123456[/b]"
+                                                    hint_text:"0"
+                                                    font_size:18
+                                                    halign:"center"
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:SellerNoofItemsAndCost3
+                                                    text:"5 Items Ordered               Total cost:100"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    text:"Click to view the Food Items"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                        MDCard:
+                                            id:CustomerOrder4
+                                            radius:12
+                                            size_hint:(0.9,.3)
+                                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                                            halign:"center"
+                                            elevation:10
+                                            opacity:1
+                                            disabled : False
+                                            adaptive_height: True
+                                            ripple_behavior: True
+                                            on_release:
+                                                root.GoInSellerOrderDetailes(app,4)
+
+                                            BoxLayout:
+                                                orientation:'vertical'
+                                                size: root.width,root.height
+
+                                                padding:'5dp'
+                                                spacing:10
+                                                MDLabel:
+                                                    id:SellerOrderStatus4
+                                                    text:"Ordered"
+                                                    halign:"center"
+                                                    font_size:18
+                                                    height:self.texture_size[1]
+                                                MDProgressBar:
+                                                    id:SellerOrderStatusValue4
+                                                    value: 5
+                                                MDLabel :
+                                                    id:SellerOrderNo4
+                                                    text:"[b]Order No : 123456[/b]"
+                                                    hint_text:"0"
+                                                    font_size:18
+                                                    halign:"center"
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:SellerNoofItemsAndCost4
+                                                    text:"5 Items Ordered               Total cost:100"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    text:"Click to view the Food Items"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                        MDCard:
+                                            id:CustomerOrder5
+                                            radius:12
+                                            size_hint:(0.9,.3)
+                                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                                            halign:"center"
+                                            elevation:10
+                                            opacity:1
+                                            disabled : False
+                                            adaptive_height: True
+                                            ripple_behavior: True
+                                            on_release:
+                                                root.GoInSellerOrderDetailes(app,5)
+
+                                            BoxLayout:
+                                                orientation:'vertical'
+                                                size: root.width,root.height
+
+                                                padding:'5dp'
+                                                spacing:10
+                                                MDLabel:
+                                                    id:SellerOrderStatus5
+                                                    text:"Ordered"
+                                                    halign:"center"
+                                                    font_size:18
+                                                    height:self.texture_size[1]
+                                                MDProgressBar:
+                                                    id:SellerOrderStatusValue5
+                                                    value: 5
+                                                MDLabel :
+                                                    id:SellerOrderNo5
+                                                    text:"[b]Order No : 123456[/b]"
+                                                    hint_text:"0"
+                                                    font_size:18
+                                                    halign:"center"
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:SellerNoofItemsAndCost5
+                                                    text:"5 Items Ordered               Total cost:100"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    text:"Click to view the Food Items"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                        MDCard:
+                                            id:CustomerOrder6
+                                            radius:12
+                                            size_hint:(0.9,.3)
+                                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                                            halign:"center"
+                                            elevation:10
+                                            opacity:1
+                                            disabled : False
+                                            adaptive_height: True
+                                            ripple_behavior: True
+                                            on_release:
+                                                root.GoInSellerOrderDetailes(app,6)
+
+                                            BoxLayout:
+                                                orientation:'vertical'
+                                                size: root.width,root.height
+
+                                                padding:'5dp'
+                                                spacing:10
+                                                MDLabel:
+                                                    id:SellerOrderStatus6
+                                                    text:"Ordered"
+                                                    halign:"center"
+                                                    font_size:18
+                                                    height:self.texture_size[1]
+                                                MDProgressBar:
+                                                    id:SellerOrderStatusValue6
+                                                    value: 5
+                                                MDLabel :
+                                                    id:SellerOrderNo6
+                                                    text:"[b]Order No : 123456[/b]"
+                                                    hint_text:"0"
+                                                    font_size:18
+                                                    halign:"center"
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:SellerNoofItemsAndCost6
+                                                    text:"5 Items Ordered               Total cost:100"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    text:"Click to view the Food Items"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                        MDCard:
+                                            id:CustomerOrder7
+                                            radius:12
+                                            size_hint:(0.9,.3)
+                                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                                            halign:"center"
+                                            elevation:10
+                                            opacity:1
+                                            disabled : False
+                                            adaptive_height: True
+                                            ripple_behavior: True
+                                            on_release:
+                                                root.GoInSellerOrderDetailes(app,7)
+
+                                            BoxLayout:
+                                                orientation:'vertical'
+                                                size: root.width,root.height
+
+                                                padding:'5dp'
+                                                spacing:10
+                                                MDLabel:
+                                                    id:SellerOrderStatus7
+                                                    text:"Ordered"
+                                                    halign:"center"
+                                                    font_size:18
+                                                    height:self.texture_size[1]
+                                                MDProgressBar:
+                                                    id:SellerOrderStatusValue7
+                                                    value: 5
+                                                MDLabel :
+                                                    id:SellerOrderNo7
+                                                    text:"[b]Order No : 123456[/b]"
+                                                    hint_text:"0"
+                                                    font_size:18
+                                                    halign:"center"
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:SellerNoofItemsAndCost7
+                                                    text:"5 Items Ordered               Total cost:100"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    text:"Click to view the Food Items"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                        MDCard:
+                                            id:CustomerOrder8
+                                            radius:12
+                                            size_hint:(0.9,.3)
+                                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                                            halign:"center"
+                                            elevation:10
+                                            opacity:1
+                                            disabled : False
+                                            adaptive_height: True
+                                            ripple_behavior: True
+                                            on_release:
+                                                root.GoInSellerOrderDetailes(app,8)
+
+                                            BoxLayout:
+                                                orientation:'vertical'
+                                                size: root.width,root.height
+
+                                                padding:'5dp'
+                                                spacing:10
+                                                MDLabel:
+                                                    id:SellerOrderStatus8
+                                                    text:"Ordered"
+                                                    halign:"center"
+                                                    font_size:18
+                                                    height:self.texture_size[1]
+                                                MDProgressBar:
+                                                    id:SellerOrderStatusValue8
+                                                    value: 5
+                                                MDLabel :
+                                                    id:SellerOrderNo8
+                                                    text:"[b]Order No : 123456[/b]"
+                                                    hint_text:"0"
+                                                    font_size:18
+                                                    halign:"center"
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:SellerNoofItemsAndCost8
+                                                    text:"5 Items Ordered               Total cost:100"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    text:"Click to view the Food Items"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                        MDCard:
+                                            id:CustomerOrder9
+                                            radius:12
+                                            size_hint:(0.9,.3)
+                                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                                            halign:"center"
+                                            elevation:10
+                                            opacity:1
+                                            disabled : False
+                                            adaptive_height: True
+                                            ripple_behavior: True
+                                            on_release:
+                                                root.GoInSellerOrderDetailes(app,9)
+
+                                            BoxLayout:
+                                                orientation:'vertical'
+                                                size: root.width,root.height
+
+                                                padding:'5dp'
+                                                spacing:10
+                                                MDLabel:
+                                                    id:SellerOrderStatus9
+                                                    text:"Ordered"
+                                                    halign:"center"
+                                                    font_size:18
+                                                    height:self.texture_size[1]
+                                                MDProgressBar:
+                                                    id:SellerOrderStatusValue9
+                                                    value: 5
+                                                MDLabel :
+                                                    id:SellerOrderNo9
+                                                    text:"[b]Order No : 123456[/b]"
+                                                    hint_text:"0"
+                                                    font_size:18
+                                                    halign:"center"
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:SellerNoofItemsAndCost9
+                                                    text:"5 Items Ordered               Total cost:100"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    text:"Click to view the Food Items"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                        MDCard:
+                                            id:CustomerOrder10
+                                            radius:12
+                                            size_hint:(0.9,.3)
+                                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                                            halign:"center"
+                                            elevation:10
+                                            opacity:1
+                                            disabled : False
+                                            adaptive_height: True
+                                            ripple_behavior: True
+                                            on_release:
+                                                root.GoInSellerOrderDetailes(app,10)
+
+                                            BoxLayout:
+                                                orientation:'vertical'
+                                                size: root.width,root.height
+
+                                                padding:'5dp'
+                                                spacing:10
+                                                MDLabel:
+                                                    id:SellerOrderStatus10
+                                                    text:"Ordered"
+                                                    halign:"center"
+                                                    font_size:18
+                                                    height:self.texture_size[1]
+                                                MDProgressBar:
+                                                    id:SellerOrderStatusValue10
+                                                    value: 5
+                                                MDLabel :
+                                                    id:SellerOrderNo10
+                                                    text:"[b]Order No : 123456[/b]"
+                                                    hint_text:"0"
+                                                    font_size:18
+                                                    halign:"center"
+                                                    markup: True
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    id:SellerNoofItemsAndCost10
+                                                    text:"5 Items Ordered               Total cost:100"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+                                                MDLabel :
+                                                    text:"Click to view the Food Items"
+                                                    color:"black"
+                                                    font_name:"Century"
+                                                    halign:"center"
+                                                    font_size:15
+                                                    size_hint_y:None
+                                                    height:self.texture_size[1]
+
+
+                            MDBottomNavigationItem:
+                                name:"S3"
+                                text:"24/7"
+                                icon:"alert"
+
+
+            MDNavigationDrawer:
+                id:seller_nav_drawer
+
+                BoxLayout:
+                    orientation:"vertical"
+
+                    padding:20
+                    spacing:20
+                    MDRectangleFlatIconButton:
+                        icon:"account"
+                        text:"Welcome User"
+                        line_color:(0, 0, 0, 0)
+                        font_size: "25sp"
+                        user_font_size: "64sp"
+
+                    ScrollView:
+                        MDList:
+                            OneLineIconListItem:
+                                text:"Profile"
+                                IconLeftWidget:
+                                    icon:"google-street-view"
+
+                            OneLineIconListItem:
+                                text:"Edit Shop details"
+                                IconLeftWidget:
+                                    icon:"store"
+
+                            OneLineIconListItem:
+                                text:"Settings"
+                                IconLeftWidget:
+                                    icon:"tools"
+
+                            OneLineIconListItem:
+                                text:"Logout"
+                                IconLeftWidget:
+                                    icon:"logout"
+
+    Screen:
+        name:"SellerFoodlist"
+        BoxLayout:
+            orientation:"vertical"
+            size:root.width,root.height
+
+            padding:8
+
+            MDToolbar:
+                title:"Order"
+                elevation:10
+                left_action_items:[["arrow-left",lambda x: root.return_sellerHomePage(app),"Back"]]
+                right_action_items:[["plus",lambda x: root.AddFood(app),"Add Food"]]
+                #size_hint_y: 0.12
+            ScrollView:
+                GridLayout:
+                    id: grid_banner
+                    cols: 1
+                    padding: 7, 7
+                    spacing: 10, 10
+                    size_hint_y: None
+                    height: self.minimum_height
+                    row_default_height: 180
+
+                    MDCard:
+                        id:Sfood1
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        opacity:0
+                        disabled : True
+                        adaptive_height: True
+                        ripple_behavior: True
+                        on_release: app.GoInFoodDetailes(app,"1")
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:SF1Image
+                                source:'ChickenBiryani.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:SF1Label1
+                                text:"[b]Food1[/b]"
+                                hint_text:"0"
+                                font_size:18
+                                markup: True
+                                halign:"center"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SF1Label2
+                                text:"Quantity : 20          Price : 100Rs"
+                                halign:"center"
+                                color:"black"
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+
+                    MDCard:
+                        id:Sfood2
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+                        on_release: app.GoInFoodDetailes(app,"2")
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:SF2Image
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:SF2Label1
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                halign:"center"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SF2Label2
+                                text:"Quantity : 20          Price : 100Rs"
+                                halign:"center"
+                                color:"black"
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+                    MDCard:
+                        id:Sfood3
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+                        on_release: app.GoInFoodDetailes(app,"3")
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:SF3Image
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:SF3Label1
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                halign:"center"
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SF3Label2
+                                text:"Quantity : 20          Price : 100Rs"
+                                halign:"center"
+                                color:"black"
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:Sfood4
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+                        on_release: app.GoInFoodDetailes(app,"4")
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:SF4Image
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:SF4Label1
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                halign:"center"
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SF4Label2
+                                text:"Quantity : 20          Price : 100Rs"
+                                halign:"center"
+                                color:"black"
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:Sfood5
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+                        on_release: app.GoInFoodDetailes(app,"5")
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:SF5Image
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:SF5Label1
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                halign:"center"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SF5Label2
+                                text:"Quantity : 20          Price : 100Rs"
+                                halign:"center"
+                                color:"black"
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+    Screen:
+        name:"SellerFoodAdding"
+        BoxLayout:
+            orientation:"vertical"
+            size: root.width,root.height
+
+            padding:8
+            spacing:12
+            MDToolbar:
+                title:"Order"
+                elevation:10
+                left_action_items:[["arrow-left",lambda x: root.returnFoodlist(app),"Back"]]
+                #size_hint_y: 0.12
+
+            MDTextField:
+                id:DishName
+                hint_text:"Dish Name"
+                #mode:"fill"
+                #fill_color:"white"
+
+            MDLabel:
+                text:"Image"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDDropDownItem:
+                id: ImageInfo
+                pos_hint: {'center_x': .3, 'center_y': .5}
+                text: 'Select'
+                on_release:root.AddImage()
+
+            MDSeparator:
+
+            MDLabel:
+                text:"Veg/NonVeg"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDDropDownItem:
+                id: FoodSelect
+                pos_hint: {'center_x': .2, 'center_y': .5}
+                text: 'Select'
+                on_release:root.FoodType()
+
+            MDSeparator:
+
+            MDLabel:
+                text:"Food Category"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDDropDownItem:
+                id: select
+                pos_hint: {'center_x': .2, 'center_y': .5}
+                text: 'Select'
+                on_release:root.FoodCategory()
+
+
+            MDTextField:
+                id:Quantity
+                hint_text:"Quantity"
+                #mode:"rectangle"
+
+            MDTextField:
+                id:FoodPrice
+                hint_text:"Price"
+                #mode:"rectangle"
+
+            MDRoundFlatButton:
+                id:Adding
+                text:"Add"
+                pos_hint:{"center_x":0.5,"center_y":0.5}
+                on_release:root.SellerAddFood(app)
+            Widget:
+                height:30
+
+    Screen:
+        name:"SellerFoodAddedSuccessfully"
+        BoxLayout:
+            orientation:"vertical"
+            size: root.width,root.height
+
+            padding:30
+            spacing:20
+            Image:
+                source:"Done.png"
+                allow_stretch: False
+                keep_ratio: False
+
+            MDLabel:
+                text:"Added Successfully"
+                color:"blue"
+                font_size:30
+                font_name:"Comic"
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDLabel:
+                id:ItemNo
+                text:"Item No = "
+                color:"blue"
+                halign:"center"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDRoundFlatButton:
+                text:"Done"
+                font_size:18
+                pos_hint:{"center_x":0.5,"center_y":0.001}
+                on_release:
+                    root.GoToSellerFoodlist(app)
+
+    Screen:
+        name:"SellerFoodOrders1"
+        BoxLayout:
+            orientation:"vertical"
+            size:root.width,root.height
+
+            padding:8
+
+            MDToolbar:
+                title:"Order"
+                elevation:10
+                left_action_items:[["arrow-left",lambda x: root.returnFoodlist(app),"Back"]]
+                #size_hint_y: 0.12
+            ScrollView:
+                GridLayout:
+                    id: grid_banner
+                    cols: 1
+                    rows:1
+                    padding: 7, 7
+                    spacing: 10, 10
+                    size_hint_y: None
+                    height: self.minimum_height
+                    row_default_height: 180
+
+                    MDCard:
+                        id:SFCard1
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+
+                            Image:
+                                id:SFIinfo0
+                                source:'ChickenBiryani.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:SFDinfo1
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                halign:"center"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SFDinfo2
+                                text:"Quantity : 20          Price : 100Rs"
+                                halign:"center"
+                                color:"black"
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SFDinfo3
+                                text:"No of Orders :          000"
+                                markup: True
+                                halign:"center"
+                                color:"black"
+                                hint_text:"00"
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+                            MDTextButton:
+                                id:SFCustomize
+                                text:"Customize"
+                                color:"dodgerblue"
+                                font_name:"Century"
+                                pos_hint:{'center_x':0.85,'center_y':0.5}
+                                on_release:root.CustomizeFoodDetailes(app)
+    Screen:
+        name:"EditFoodDetailes"
+        BoxLayout:
+            orientation:"vertical"
+            size:root.width,root.height
+
+            padding:10
+            spacing:12
+
+            MDToolbar:
+                title:"Order"
+                elevation:10
+                left_action_items:[["arrow-left",lambda x: root.returnFoodDetailes(app),"Back"]]
+                #size_hint_y: 0.12
+
+            MDTextField:
+                id:DNameEdit
+                hint_text:"Dish Name"
+                required:True
+                helper_text_mode: "on_error"
+
+            MDLabel:
+                id:ImageEdit
+                text:"Image"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDDropDownItem:
+                id:ImageNoEdit
+                pos_hint: {'center_x': .3, 'center_y': .5}
+                text: 'Select'
+                on_release:root.AddImageEdit()
+
+            MDSeparator:
+
+            MDLabel:
+                text:"Veg/NonVeg"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDDropDownItem:
+                id:FTypeEdit
+                pos_hint: {'center_x': .2, 'center_y': .5}
+                text: 'Select'
+                on_release:root.FoodTypeEdit()
+
+            MDSeparator:
+
+            MDLabel:
+                text:"Food Category"
+                size_hint_y:None
+                height:self.texture_size[1]
+
+            MDDropDownItem:
+                id:FCategoryEdit
+                pos_hint: {'center_x': .2, 'center_y': .5}
+                text: 'Select'
+                on_release:root.FoodCategoryEdit()
+
+
+            MDTextField:
+                id:QuantityEdit
+                hint_text:"Quantity"
+                required:True
+                helper_text_mode: "on_error"
+
+            MDTextField:
+                id:PriceEdit
+                hint_text:"Price"
+                required:True
+                helper_text_mode: "on_error"
+
+            MDRoundFlatButton:
+                text:"Confirm"
+                pos_hint:{"center_x":0.5,"center_y":0.5}
+                on_release:
+                    root.UpdateFoodDetailes(app)
+            Widget:
+                height:30
+
+    Screen:
+        name:"UpdationDoneSuccessfully"
+        BoxLayout:
+            orientation:"vertical"
+            size: root.width,root.height
+
+            padding:30
+            spacing:20
+            Image:
+                source:"Done.png"
+                allow_stretch: False
+                keep_ratio: False
+
+            MDLabel:
+                text:"Updated Successfully"
+                size_hint_y:None
+                height:self.texture_size[1]
+                color:"blue"
+                font_size:30
+                font_name:"Comic"
+                halign:"center"
+
+            MDRoundFlatButton:
+                text:"Done"
+                font_size:18
+                pos_hint:{"center_x":0.5,"center_y":0.001}
+                on_release:
+                    root.GoToSellerFoodlist(app)
+
+    Screen:
+        name:"CanteensList"
+        BoxLayout:
+            orientation:"vertical"
+            size:root.width,root.height
+
+            padding:8
+
+            MDToolbar:
+                title:"Order"
+                elevation:10
+                left_action_items:[["arrow-left",lambda x: root.set_screen(app),"Back"]]
+                #size_hint_y: 0.12
+            ScrollView:
+                GridLayout:
+                    id: grid_banner
+                    cols: 1
+                    padding: 7, 7
+                    spacing: 10, 10
+                    size_hint_y: None
+                    height: self.minimum_height
+                    row_default_height: 180
+
+                    MDCard:
+                        id:Clist1
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        opacity:1
+                        disabled : False
+                        adaptive_height: True
+                        ripple_behavior: True
+                        on_release: app.GoInCanteenFoodList(app,1)
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:CImage1
+                                source:'kl.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:CCanteenName1
+                                text:"[b]Canteen Name[/b]"
+                                hint_text:"0"
+                                font_size:18
+                                markup: True
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:CCollegeName1
+                                text:"College Name"
+                                color:"black"
+                                font_name:"Century"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:CAddress1
+                                text:"Canteen Address"
+                                color:"black"
+                                font_size:14
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+
+                    MDCard:
+                        id:Clist2
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+                        on_release: app.GoInCanteenFoodList(app,2)
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:CImage2
+                                source:'kl.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:CCanteenName2
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:CCollegeName2
+                                text:"CollegeName"
+                                color:"black"
+                                font_name:"Century"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+                            MDLabel :
+                                id:CAddress2
+                                text:"Canteen Address"
+                                color:"black"
+                                font_size:14
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+                    MDCard:
+                        id:Clist3
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+                        on_release: app.GoInCanteenFoodList(app,3)
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:CImage3
+                                source:'kl.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:CCanteenName3
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:CCollegeName3
+                                text:"CollegeName"
+                                halign:"center"
+                                font_size:14
+                                color:"black"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+                            MDLabel :
+                                id:CAddress3
+                                text:"Canteen Address"
+                                halign:"center"
+                                font_size:14
+                                color:"black"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:Clist4
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+                        on_release: app.GoInCanteenFoodList(app,4)
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:CImage4
+                                source:'kl.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:CCanteenName4
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:CCollegeName4
+                                text:"CollegeName"
+                                color:"black"
+                                font_name:"Century"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:CAddress4
+                                text:"Canteen Address"
+                                color:"black"
+                                font_size:14
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:Clist5
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+                        on_release: app.GoInCanteenFoodList(app,5)
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:CImage5
+                                source:'kl.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:CCanteenName5
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:CCollegeName5
+                                text:"CollegeName"
+                                color:"black"
+                                font_name:"Century"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:CAddress5
+                                text:"Canteen Address"
+                                font_size:14
+                                color:"black"
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+    Screen:
+        name:"FoodListAccordingly"
+        BoxLayout:
+            orientation:"vertical"
+            size:root.width,root.height
+
+            padding:8
+
+            MDToolbar:
+                title:"Order"
+                elevation:10
+                left_action_items:[["arrow-left",lambda x: root.GotoCanteenList(app,3),"Back"]]
+                #size_hint_y: 0.12
+            ScrollView:
+                GridLayout:
+                    id: grid_banner
+                    cols: 1
+                    padding: 7, 7
+                    spacing: 10, 10
+                    size_hint_y: None
+                    height: self.minimum_height
+                    row_default_height: 180
+
+
+                    MDCard:
+                        id:CFoodlist1
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        opacity:0
+                        disabled : True
+                        adaptive_height: True
+                        ripple_behavior: True
+                        on_release:root.FoodDetailesSelected(app,1)
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            MDIcon:
+                                id:FIconColor1
+                                icon: "square-circle"
+                                color:"green"
+                                size_hint:(0.09,0.09)
+                                pos_hint:{'center_x':0.07,'center_y':0.5}
+                            Image:
+                                id:CFoodImage1
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:CFoodName1
+                                text:"[b]Food Name[/b]"
+                                halign:"center"
+                                hint_text:"0"
+                                font_size:18
+                                markup: True
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:CCollegeAndCanteenName1
+                                text:"Canteen Name,CollegeName          Rs 100 for one"
+                                color:"black"
+                                font_size:14
+                                halign:"center"
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+
+                    MDCard:
+                        id:CFoodlist2
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        disabled : True
+                        opacity : 0
+                        ripple_behavior: True
+                        on_release:root.FoodDetailesSelected(app,2)
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            MDIcon:
+                                id:FIconColor2
+                                icon: "square-circle"
+                                color:"red"
+                                size_hint:(0.09,0.09)
+                                pos_hint:{'center_x':0.07,'center_y':0.5}
+                            Image:
+                                id:CFoodImage2
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:CFoodName2
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                halign:"center"
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:CCollegeAndCanteenName2
+                                text:"CollegeName,College Canteen"
+                                color:"black"
+                                halign:"center"
+                                font_name:"Century"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:CFoodlist3
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        disabled : True
+                        opacity : 0
+                        ripple_behavior: True
+                        on_release:root.FoodDetailesSelected(app,3)
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            MDIcon:
+                                id:FIconColor3
+                                icon: "square-circle"
+                                color:"red"
+                                size_hint:(0.09,0.09)
+                                pos_hint:{'center_x':0.07,'center_y':0.5}
+                            Image:
+                                id:CFoodImage3
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:CFoodName3
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                halign:"center"
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:CCollegeAndCanteenName3
+                                text:"CollegeName,College Canteen"
+                                halign:"center"
+                                font_size:14
+                                color:"black"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:CFoodlist4
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        disabled : True
+                        opacity : 0
+                        ripple_behavior: True
+                        on_release:root.FoodDetailesSelected(app,4)
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            MDIcon:
+                                id:FIconColor4
+                                icon: "square-circle"
+                                color:"red"
+                                size_hint:(0.09,0.09)
+                                pos_hint:{'center_x':0.07,'center_y':0.5}
+                            Image:
+                                id:CFoodImage4
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:CFoodName4
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                halign:"center"
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:CCollegeAndCanteenName4
+                                text:"CollegeName,College Canteen"
+                                color:"black"
+                                font_name:"Century"
+                                halign:"center"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:CFoodlist5
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        disabled : True
+                        opacity : 0
+                        ripple_behavior: True
+                        on_release:root.FoodDetailesSelected(app,5)
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            MDIcon:
+                                id:FIconColor5
+                                icon: "square-circle"
+                                color:"red"
+                                size_hint:(0.09,0.09)
+                                pos_hint:{'center_x':0.07,'center_y':0.5}
+                            Image:
+                                id:CFoodImage5
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:CFoodName5
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                halign:"center"
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:CCollegeAndCanteenName5
+                                text:"CollegeName,College Canteen"
+                                color:"black"
+                                font_name:"Century"
+                                halign:"center"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+    Screen:
+        name:"SelectedFoodOrder"
+        BoxLayout:
+            orientation:"vertical"
+            size:root.width,root.height
+
+            padding:8
+
+            MDToolbar:
+                title:"Order"
+                elevation:10
+                left_action_items:[["arrow-left",lambda x: root.GoInCanteenFoodList(app,0,0),"Back"]]
+                #size_hint_y: 0.12
+            ScrollView:
+                GridLayout:
+                    id: grid_banner
+                    cols: 1
+                    padding: 7, 7
+                    spacing: 10, 10
+                    size_hint_y: None
+                    height: self.minimum_height
+                    row_default_height: 500
+
+
+                    MDCard:
+                        id:SelectedFood
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        opacity:0
+                        disabled : True
+                        adaptive_height: True
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            spacing:15
+                            MDIcon:
+                                id:SelectedFoodIcon
+                                icon: "square-circle"
+                                color:"red"
+                                size_hint:(0.09,0.09)
+                                pos_hint:{'center_x':0.07,'center_y':0.5}
+                            Image:
+                                id:SelectedFoodImage
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:SelectedFoodName
+                                text:"[b]Food Name[/b]"
+                                halign:"center"
+                                hint_text:"0"
+                                font_size:18
+                                markup: True
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SelectedFoodClgAndCanteen
+                                text:"Canteen Name,CollegeName  "
+                                color:"black"
+                                font_size:14
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SelectedFoodCanteenAddress
+                                text:"Canteen Address"
+                                color:"black"
+                                font_size:14
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SelectedFoodPrice
+                                text:"Price : Rs 100 for one"
+                                color:"black"
+                                font_size:15
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDTextField:
+                                id:SelectedFoodQuantity
+                                text:"1"
+                                hint_text:"Quantity"
+                                required:True
+                                helper_text_mode: "on_error"
+                            MDFillRoundFlatButton:
+                                text:"Add"
+                                pos_hint:{"center_x":0.5,"center_y":0.5}
+                                on_release:root.GoBackToFoodListAfterSelecting(app,1)
+
+    Screen:
+        name:"FoodListAccordinglyForBuying"
+        BoxLayout:
+            orientation:"vertical"
+            size:root.width,root.height
+
+            padding:8
+
+            MDToolbar:
+                title:"Order"
+                elevation:10
+                left_action_items:[["arrow-left",lambda x: root.SelectedFoodOrderDetailes(app),"Back"]]
+                #size_hint_y: 0.12
+            ScrollView:
+                GridLayout:
+                    id: grid_banner
+                    cols: 1
+                    padding: 7, 7
+                    spacing: 10, 10
+                    size_hint_y: None
+                    height: self.minimum_height
+                    row_default_height: 180
+
+
+                    MDCard:
+                        id:COFoodlist1
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        opacity:0
+                        disabled : True
+                        adaptive_height: True
+                        ripple_behavior: True
+                        on_release:root.SelectedFoodOrderDetailes(app,1)
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            MDIcon:
+                                id:FOIconColor1
+                                icon: "square-circle"
+                                color:"green"
+                                size_hint:(0.09,0.09)
+                                pos_hint:{'center_x':0.07,'center_y':0.5}
+                            Image:
+                                id:COFoodImage1
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:COFoodName1
+                                text:"[b]Food Name[/b]"
+                                halign:"center"
+                                hint_text:"0"
+                                font_size:18
+                                markup: True
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:COCollegeAndCanteenName1
+                                text:"Canteen Name,CollegeName          Rs 100 for one"
+                                color:"black"
+                                font_size:14
+                                halign:"center"
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+
+                    MDCard:
+                        id:COFoodlist2
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        disabled : True
+                        opacity : 0
+                        ripple_behavior: True
+                        on_release:root.SelectedFoodOrderDetailes(app,2)
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            MDIcon:
+                                id:FOIconColor2
+                                icon: "square-circle"
+                                color:"red"
+                                size_hint:(0.09,0.09)
+                                pos_hint:{'center_x':0.07,'center_y':0.5}
+                            Image:
+                                id:COFoodImage2
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:COFoodName2
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                halign:"center"
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:COCollegeAndCanteenName2
+                                text:"CollegeName,College Canteen"
+                                color:"black"
+                                halign:"center"
+                                font_name:"Century"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:COFoodlist3
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        disabled : True
+                        opacity : 0
+                        ripple_behavior: True
+                        on_release:root.SelectedFoodOrderDetailes(app,3)
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            MDIcon:
+                                id:FOIconColor3
+                                icon: "square-circle"
+                                color:"red"
+                                size_hint:(0.09,0.09)
+                                pos_hint:{'center_x':0.07,'center_y':0.5}
+                            Image:
+                                id:COFoodImage3
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:COFoodName3
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                halign:"center"
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:COCollegeAndCanteenName3
+                                text:"CollegeName,College Canteen"
+                                halign:"center"
+                                font_size:14
+                                color:"black"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:COFoodlist4
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        disabled : True
+                        opacity : 0
+                        ripple_behavior: True
+                        on_release:root.SelectedFoodOrderDetailes(app,4)
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            MDIcon:
+                                id:FOIconColor4
+                                icon: "square-circle"
+                                color:"red"
+                                size_hint:(0.09,0.09)
+                                pos_hint:{'center_x':0.07,'center_y':0.5}
+                            Image:
+                                id:COFoodImage4
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:COFoodName4
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                halign:"center"
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:COCollegeAndCanteenName4
+                                text:"CollegeName,College Canteen"
+                                color:"black"
+                                font_name:"Century"
+                                halign:"center"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:COFoodlist5
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        disabled : True
+                        opacity : 0
+                        ripple_behavior: True
+                        on_release:root.SelectedFoodOrderDetailes(app,5)
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            MDIcon:
+                                id:FOIconColor5
+                                icon: "square-circle"
+                                color:"red"
+                                size_hint:(0.09,0.09)
+                                pos_hint:{'center_x':0.07,'center_y':0.5}
+                            Image:
+                                id:COFoodImage5
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:COFoodName5
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                halign:"center"
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:COCollegeAndCanteenName5
+                                text:"CollegeName,College Canteen"
+                                color:"black"
+                                font_name:"Century"
+                                halign:"center"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+            MDToolbar:
+                id:PriceToolBar
+                title:"2 Items Rs 300              Pay"
+                elevation:10
+                md_bg_color:0,0,1,0.4
+                right_action_items:[["chevron-right",lambda x: root.AfterPaymentSuccessfull(app),"Pay"]]
+                size_hint_y: 0.12
+
+    Screen:
+        name:"SelectedFoodOrderBuying"
+        BoxLayout:
+            orientation:"vertical"
+            size:root.width,root.height
+
+            padding:8
+
+            MDToolbar:
+                title:"Order"
+                elevation:10
+                left_action_items:[["arrow-left",lambda x: root.GoBackToFoodListAfterSelecting(app,0,36),"Back"]]
+                #size_hint_y: 0.12
+            ScrollView:
+                GridLayout:
+                    id: grid_banner
+                    cols: 1
+                    padding: 7, 7
+                    spacing: 10, 10
+                    size_hint_y: None
+                    height: self.minimum_height
+                    row_default_height: 500
+
+                    MDCard:
+                        id:SelectedFoodDetailes
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        opacity:0
+                        disabled : True
+                        adaptive_height: True
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            spacing:15
+                            MDIcon:
+                                id:SelectedOrderFoodIcon
+                                icon: "square-circle"
+                                color:"red"
+                                size_hint:(0.09,0.09)
+                                pos_hint:{'center_x':0.07,'center_y':0.5}
+                            Image:
+                                id:SelectedOrderFoodImage
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:SelectedOrderFoodName
+                                text:"[b]Food Name[/b]"
+                                halign:"center"
+                                hint_text:"0"
+                                font_size:18
+                                markup: True
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SelectedOrderFoodClgAndCanteen
+                                text:"Canteen Name,CollegeName  "
+                                color:"black"
+                                font_size:14
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SelectedOrderFoodCanteenAddress
+                                text:"Canteen Address"
+                                color:"black"
+                                font_size:14
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SelectedOrderFoodPrice
+                                text:"Price : Rs 100 for one"
+                                color:"black"
+                                font_size:15
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDTextField:
+                                id:SelectedOrderFoodQuantity
+                                text:"1"
+                                hint_text:"Quantity"
+                                required:True
+                                helper_text_mode: "on_error"
+                            MDFillRoundFlatButton:
+                                text:"Add"
+                                pos_hint:{"center_x":0.5,"center_y":0.5}
+                                on_release:root.GoBackToFoodListAfterSelecting(app,2)
+    Screen:
+        name:"PaymentSuccessfull"
+        BoxLayout:
+            orientation:"vertical"
+            size: root.width,root.height
+
+            padding:20
+            spacing:20
+            Image:
+                source:"Done.png"
+                allow_stretch: False
+                keep_ratio: False
+
+            MDLabel:
+                text:"Ordered Successfully"
+                size_hint_y:None
+                height:self.texture_size[1]
+                color:"blue"
+                font_size:30
+                font_name:"Comic"
+                halign:"center"
+            MDLabel:
+                id:PaymentAmount
+                text:"Total Money Spent : "
+                halign:"center"
+                font_size:20
+                size_hint_y:None
+                height:self.texture_size[1]
+            MDLabel:
+                id:OtpAfterPayment
+                text:"Otp ="
+                halign:"center"
+                font_size:20
+                size_hint_y:None
+                height:self.texture_size[1]
+            MDLabel:
+                text:"Use this otp while taking your order"
+                halign:"center"
+                font_size:15
+                size_hint_y:None
+                height:self.texture_size[1]
+            MDRoundFlatButton:
+                text:"Go to Orders"
+                font_size:18
+                size_hint_y:None
+                pos_hint:{"center_x":0.5,"center_y":0.001}
+                on_release:root.DetailesPage(app)
+    Screen:
+        name:"OrderedCanteenFoodList"
+        BoxLayout:
+            orientation:"vertical"
+            size:root.width,root.height
+
+            padding:8
+
+            MDToolbar:
+                title:"Order"
+                elevation:10
+                left_action_items:[["arrow-left",lambda x: root.set_screen(app),"Back"]]
+                #size_hint_y: 0.12
+            ScrollView:
+                GridLayout:
+                    id: grid_banner
+                    cols: 1
+                    padding: 7, 7
+                    spacing: 10, 10
+                    size_hint_y: None
+                    height: self.minimum_height
+                    row_default_height: 180
+
+                    MDCard:
+                        id:OrderStatusDetailes
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        opacity:1
+                        disabled : False
+                        adaptive_height: True
+                        ripple_behavior: True
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            spacing:10
+                            MDLabel:
+                                id:StatusType
+                                text:"Ordered"
+                                halign:"center"
+                                font_size:18
+                                height:self.texture_size[1]
+                            MDProgressBar:
+                                id:ProgressBarStatus
+                                value: 5
+                            MDLabel :
+                                id:OrderNoPrint
+                                text:"[b]Order No : 123456[/b]"
+                                hint_text:"0"
+                                font_size:18
+                                halign:"center"
+                                markup: True
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:TotalItemsOrdered
+                                text:"5 Items Ordered               Total cost:100"
+                                color:"black"
+                                font_name:"Century"
+                                halign:"center"
+                                font_size:15
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                text:"Items are given below"
+                                color:"black"
+                                font_name:"Century"
+                                halign:"center"
+                                font_size:15
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+
+                    MDCard:
+                        id:OrderedItemListNo1
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:OrderedItemImage1
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:OrderedItemFoodName1
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:OrderedItemQuantity1
+                                text:"Quantity  :"
+                                color:"black"
+                                font_name:"Century"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+                            MDLabel :
+                                id:OrderedItemPrice1
+                                text:"Price     :"
+                                color:"black"
+                                font_size:14
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+                    MDCard:
+                        id:OrderedItemListNo2
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:OrderedItemImage2
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:OrderedItemFoodName2
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:OrderedItemQuantity2
+                                text:"CollegeName"
+                                font_size:14
+                                color:"black"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+                            MDLabel :
+                                id:OrderedItemPrice2
+                                text:"Canteen Address"
+                                font_size:14
+                                color:"black"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:OrderedItemListNo3
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:OrderedItemImage3
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:OrderedItemFoodName3
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:OrderedItemQuantity3
+                                text:"CollegeName"
+                                color:"black"
+                                font_name:"Century"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:OrderedItemPrice3
+                                text:"Canteen Address"
+                                color:"black"
+                                font_size:14
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:OrderedItemListNo4
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:OrderedItemImage4
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:OrderedItemFoodName4
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:OrderedItemQuantity4
+                                text:"CollegeName"
+                                color:"black"
+                                font_name:"Century"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:OrderedItemPrice4
+                                text:"Canteen Address"
+                                font_size:14
+                                color:"black"
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:OrderedItemListNo5
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:OrderedItemImage5
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:OrderedItemFoodName5
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:OrderedItemQuantity5
+                                text:"CollegeName"
+                                color:"black"
+                                font_name:"Century"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+                            MDLabel :
+                                id:OrderedItemPrice5
+                                text:"Canteen Address"
+                                color:"black"
+                                font_size:14
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+    Screen:
+        name:"SellerOrderFoodListAndStatus"
+        BoxLayout:
+            orientation:"vertical"
+            size:root.width,root.height
+
+            padding:8
+
+            MDToolbar:
+                title:"Order"
+                elevation:10
+                left_action_items:[["arrow-left",lambda x: root.set_seller_homepage(app),"Back"]]
+                #size_hint_y: 0.12
+            ScrollView:
+                GridLayout:
+                    id: grid_banner
+                    cols: 1
+                    padding: 7, 7
+                    spacing: 10, 10
+                    size_hint_y: None
+                    height: self.minimum_height
+                    row_default_height: 180
+
+                    MDCard:
+                        id:SellerOrderStatusDetailes
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        opacity:1
+                        disabled : False
+                        adaptive_height: True
+                        ripple_behavior: True
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            spacing:10
+                            MDLabel:
+                                id:SellerStatusType
+                                text:"Ordered"
+                                halign:"center"
+                                font_size:18
+                                height:self.texture_size[1]
+                            MDProgressBar:
+                                id:SellerProgressBarStatus
+                                value: 5
+                            MDLabel :
+                                id:SellerOrderNoPrint
+                                text:"[b]Order No : 123456[/b]"
+                                hint_text:"0"
+                                font_size:18
+                                halign:"center"
+                                markup: True
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SellerTotalItemsOrdered
+                                text:"5 Items Ordered               Total cost:100"
+                                color:"black"
+                                font_name:"Century"
+                                halign:"center"
+                                font_size:15
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                text:"Items are given below"
+                                color:"black"
+                                font_name:"Century"
+                                halign:"center"
+                                font_size:15
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+
+                    MDCard:
+                        id:SellerOrderedItemListNo1
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:SellerOrderedItemImage1
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:SellerOrderedItemFoodName1
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SellerOrderedItemQuantity1
+                                text:"Quantity  :"
+                                color:"black"
+                                font_name:"Century"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+                            MDLabel :
+                                id:SellerOrderedItemPrice1
+                                text:"Price     :"
+                                color:"black"
+                                font_size:14
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+                    MDCard:
+                        id:SellerOrderedItemListNo2
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:SellerOrderedItemImage2
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:SellerOrderedItemFoodName2
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SellerOrderedItemQuantity2
+                                text:"CollegeName"
+                                font_size:14
+                                color:"black"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+                            MDLabel :
+                                id:SellerOrderedItemPrice2
+                                text:"Canteen Address"
+                                font_size:14
+                                color:"black"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:SellerOrderedItemListNo3
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:SellerOrderedItemImage3
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:SellerOrderedItemFoodName3
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SellerOrderedItemQuantity3
+                                text:"CollegeName"
+                                color:"black"
+                                font_name:"Century"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SellerOrderedItemPrice3
+                                text:"Canteen Address"
+                                color:"black"
+                                font_size:14
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:SellerOrderedItemListNo4
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:SellerOrderedItemImage4
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:SellerOrderedItemFoodName4
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SellerOrderedItemQuantity4
+                                text:"CollegeName"
+                                color:"black"
+                                font_name:"Century"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SellerOrderedItemPrice4
+                                text:"Canteen Address"
+                                font_size:14
+                                color:"black"
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                    MDCard:
+                        id:SellerOrderedItemListNo5
+                        radius:12
+                        size_hint:(0.9,.3)
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        halign:"center"
+                        elevation:10
+                        adaptive_height: True
+                        ripple_behavior: True
+                        disabled : True
+                        opacity : 0
+
+                        BoxLayout:
+                            orientation:'vertical'
+                            size: root.width,root.height
+
+                            padding:'5dp'
+                            Image:
+                                id:SellerOrderedItemImage5
+                                source:'food.png'
+                                size_hint:(1,1)
+                            MDLabel :
+                                id:SellerOrderedItemFoodName5
+                                text:"[b]Food1[/b]"
+                                font_size:18
+                                markup: True
+                                hint_text:"0"
+                                size_hint_y:None
+                                height:self.texture_size[1]
+                            MDLabel :
+                                id:SellerOrderedItemQuantity5
+                                text:"CollegeName"
+                                color:"black"
+                                font_name:"Century"
+                                font_size:14
+                                size_hint_y:None
+                                height:self.texture_size[1]
+
+                            MDLabel :
+                                id:SellerOrderedItemPrice5
+                                text:"Canteen Address"
+                                color:"black"
+                                font_size:14
+                                font_name:"Century"
+                                size_hint_y:None
+                                height:self.texture_size[1]
